@@ -36,17 +36,17 @@ test_cases = {
     "comp10001bo_match_discard":
     [
         # NON-FINAL VALID: 4S on empty discard stack of that player
-        ("""submission.comp10001bo_match_discard('4S', [], 2, 2)""", 1), 
+        ("""submission.comp10001bo_match_discard('4S', [], 2, 2)""", 2), 
         # INVALID: 4S on empty discard stack of different player
         ("""submission.comp10001bo_match_discard('4S', [], 2, 0)""", 0), 
-        # INVALID: can't start a stack from stockpile
-        ("""submission.comp10001bo_match_discard('4S', [], 2, 2, True)""", 0), 
+        # INVALID: can't start a stack from anything other than hand
+        ("""submission.comp10001bo_match_discard('4S', [], 2, 2, False)""", 0), 
         # NON-FINAL VALID: 4S on discard stack with 3H at top (same player)
         ("""submission.comp10001bo_match_discard('4S', ['3H'], 2, 2)""", 1), 
         # NON-FINAL VALID: 4S on discard stack with 3H at top (different player)
         ("""submission.comp10001bo_match_discard('4S', ['3H'], 2, 3)""", 1), 
         # NON-FINAL VALID: 4S on discard stack with 3H at top (different player)
-        ("""submission.comp10001bo_match_discard('4S', ['3H'], 2, 3, True)""", 1), 
+        ("""submission.comp10001bo_match_discard('4S', ['3H'], 2, 3, False)""", 1), 
         # INVALID: can't place Ace on discard stack
         ("""submission.comp10001bo_match_discard('AH', ['KS'], 2, 3)""", 0), 
         # NON-FINAL VALID: wraparound from King to 2
@@ -57,8 +57,8 @@ test_cases = {
         ("""submission.comp10001bo_match_discard('2H', ['4S'], 2, 3)""", 2), 
         # FINAL VALID: 4S on discard stack with 3H at top (different player)
         ("""submission.comp10001bo_match_discard('4H', ['3H'], 2, 3)""", 2), 
-        # INVALID: can't illegaly place card from stockpile
-        ("""submission.comp10001bo_match_discard('4H', ['3H'], 2, 2, True)""", 0), 
+        # INVALID: can't illegaly place card if not from hand
+        ("""submission.comp10001bo_match_discard('4H', ['3H'], 2, 2, False)""", 0), 
     ],
 
     "comp10001bo_is_valid_play":
@@ -81,7 +81,7 @@ test_cases = {
         ("""submission.comp10001bo_is_valid_play((2, '2H', (0, 1)), 0, ['3C', 'AS', '9D', '0D', '0S'], (('2C', 8), ('2H', 8), ('3H', 8), ('KD', 8)), (([], [], [], []), ([], [], [], []), ([], [], [], []), ([], [], [], [])), (['2S'], [], [], []))""", 0), 
         # NON-FINAL VALID (from stockpile to non-empty build stack)
         ("""submission.comp10001bo_is_valid_play((2, 'QC', (0, 1)), 0, ['3C', 'AS', '9D', '0D', '0S'], (('QC', 8), ('0D', 8), ('3H', 8), ('KD', 8)), (([], [], [], []), ([], [], [], []), ([], [], [], []), ([], [], [], [])), ([], ['KS'], [], []))""", 1), 
-        # INVALID (from stockpile to *empty* build stack 0 of Player 0)
+        # INVALID (from stockpile to *empty* discard stack 0 of Player 0)
         ("""submission.comp10001bo_is_valid_play((2, 'KC', (1, (0, 0))), 0, ['3C', 'AS', '9D', '0D', '0S'], (('KC', 8), ('0D', 8), ('3H', 8), ('KD', 8)), (([], [], [], []), ([], [], [], []), ([], [], [], []), ([], [], [], [])), ([], [], [], []))""", 0), 
         # NON-FINAL VALID (from discard pile to empty build stack 0)
         ("""submission.comp10001bo_is_valid_play((1, ('2C', (1, 0)), (0, 1)), 0, ['3C', 'AS', '9D', '0D', '0S'], (('2C', 8), ('0D', 8), ('3H', 8), ('KD', 8)), (([], [], [], []), (['3C', '2C'], [], [], []), ([], [], [], []), ([], [], [], [])), (['2S'], [], [], []))""", 1), 

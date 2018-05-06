@@ -86,7 +86,7 @@ if __name__ == "__main__":
           ([], [], [], [])), ([], [], [], [])),
 
         # NON-FINAL VALID (from discard pile to empty build pile 0)
-        (VALID_NONFINAL_PLAY, (1, '2C', (1, 0), (0, 1)), 0,
+        (VALID_NONFINAL_PLAY, (1, ('2C', (1, 0)), (0, 1)), 0,
          ['3C', 'AS', '9D', '0D', '0S'],
          (('2C', 8), ('0D', 8), ('3H', 8), ('KD', 8)),
          (([], [], [], []), (['3C', '2C'], [], [], []), ([], [], [], []),
@@ -117,7 +117,7 @@ if __name__ == "__main__":
           ([], [], [], [])), ([], [], [], [])),
 
         # INVALID: can make a number of different plays
-        (NO_PLAY, (3, None, (None, None)), 0, 
+        (INVALID_PLAY, (3, None, (None, None)), 0, 
          ['AS', '9D', '0S'], 
          (('9C', 8), ('0D', 8), ('3H', 8), ('KD', 8)), 
          ((['5S'], [], [], []), ([], [], [], []), ([], [], [], []),
@@ -125,7 +125,7 @@ if __name__ == "__main__":
 
         # NO_PLAY: no move possible (yes, it's an impossible game
         # state, but it proves a point)
-        (NO_PLAY, (None, (None, None)), 0, [], 
+        (NO_PLAY, (3, (None, None)), 0, [], 
          (('9C', 8), ('0D', 8), ('3H', 8), ('KD', 8)), 
          ((['5S'], [], [], []), ([], [], [], []), ([], [], [], []), 
           ([], [], [], [])), ([], [], [], [])),

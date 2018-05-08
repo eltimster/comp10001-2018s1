@@ -1,4 +1,4 @@
-from reference import comp10001bo_match_build, comp10001bo_match_discard
+#from reference import comp10001bo_match_build, comp10001bo_match_discard
 
 from common import *
 
@@ -132,7 +132,11 @@ if __name__ == "__main__":
 
         # INVALID (attempt to move card from discard pile back to
         # same discard pile)
-        (INVALID_PLAY, ((1, '2C', (1, 0), (1, (1, 0))), 0, ['3C', 'AS', '9D', '0D', '0S'], (('2C', 8), ('0D', 8), ('3H', 8), ('KD', 8)), (([], [], [], []), (['3C', '2C'], [], [], []), ([], [], [], []), ([], [], [], [])), (['2S'], [], [], [])))
+        (INVALID_PLAY, (1, '2C', (1, 0), (1, (1, 0))), 0,
+         ['3C', 'AS', '9D', '0D', '0S'], 
+         (('2C', 8), ('0D', 8), ('3H', 8), ('KD', 8)), 
+         (([], [], [], []), (['3C', '2C'], [], [], []),
+          ([], [], [], []), ([], [], [], [])), (['2S'], [], [], [])),
     )
 
     for retval, *args in tests:

@@ -1,4 +1,4 @@
-from reference import comp10001bo_match_build, comp10001bo_match_discard
+#from reference import comp10001bo_match_build, comp10001bo_match_discard
 
 from common import *
 
@@ -125,7 +125,7 @@ if __name__ == "__main__":
 
         # NO_PLAY: no move possible (yes, it's an impossible game
         # state, but it proves a point)
-        (NO_PLAY, (3, (None, None)), 0, [], 
+        (NO_PLAY, (3, None, (None, None)), 0, [], 
          (('9C', 8), ('0D', 8), ('3H', 8), ('KD', 8)), 
          ((['5S'], [], [], []), ([], [], [], []), ([], [], [], []), 
           ([], [], [], [])), ([], [], [], [])),

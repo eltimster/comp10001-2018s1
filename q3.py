@@ -1,4 +1,4 @@
-#from reference import comp10001bo_match_build, comp10001bo_match_discard
+from reference import comp10001bo_match_build, comp10001bo_match_discard
 
 from common import *
 
